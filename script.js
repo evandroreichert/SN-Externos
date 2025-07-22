@@ -68,7 +68,7 @@ const TEMA_ESCURO = 'dark';
         }
 
         function gerarTextoFicha(dados) {
-            let ficha = "**FICHA CADASTRAL CPF**\n\n";
+            let ficha = "*FICHA CADASTRAL CPF*\n\n";
             
             // Tipo de instalação
             ficha += `INSTALAÇÃO (SERVIÇO QUE VAI SER FEITO): ${dados.tipo_instalacao}\n\n`;
