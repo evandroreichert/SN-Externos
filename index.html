@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Abertura de Chamado</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5SCMYMNCHK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5SCMYMNCHK');
+    </script>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-links">
+                <a href="pages/planos/planos.html">Planos</a>
+                <a href="pages/documentos/documentos.html">Documentos</a>
+            </div>
+            <div class="theme-switch">
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider round"></span>
+                </label>
+                <span id="themeLabel">Dark Mode</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="logo">
+        <a href="#">
+            <img id="logo" src="/assets/dark-logo.png" alt="Logo">
+        </a>
+    </div>
+     
+    <form id="cadastroForm">
+        <h1>Ficha Cadastral CPF ⚡</h1>
+
+        <!-- Tipo de Instalação -->
+        
+
+        <div class="form-row form-row-3">
+            <div class="form-group">
+            <label for="tipo_instalacao">Tipo de Instalação</label>
+            <select id="tipo_instalacao" name="tipo_instalacao" required>
+                <option value="Instalação Fibra Aéreo">Instalação Fibra Aéreo</option>
+                <option value="Instalação FTTA">Instalação FTTA</option>
+            </select>
+        </div>
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" 
+                       pattern="^[0-9]{11}$" 
+                       title="Insira um CPF válido com 11 dígitos." 
+                       inputmode="numeric" required>
+            </div>
+            <div class="form-group">
+                <label for="data_nascimento">Data de Nascimento</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" required>
+            </div>
+        </div>
+
+        <!-- Nome e RG -->
+        <div class="form-row form-row-2">
+            <div class="form-group">
+                <label for="nome_completo">Nome Completo</label>
+                <input type="text" id="nome_completo" name="nome_completo" required>
+            </div>
+            <div class="form-group">
+                <label for="rg">RG</label>
+                <input type="text" id="rg" name="rg" required>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <!-- Como ficou sabendo -->
+        <div class="form-group">
+            <label for="como_soube">Como você ficou sabendo da SN? <span class="placeholder">- Em caso de indicação enviar nome completo</span></label>
+            <input type="text" id="como_soube" name="como_soube">
+        </div>
+
+        <!-- CEP -->
+        
+        <div class="form-row form-row-2">
+
+        <!-- Endereço e Referência -->
+        <div class="form-group">
+            <label for="endereco_completo">Endereço Completo da Instalação</label>
+            <input type="text" id="endereco_completo" name="endereco_completo" required>
+        </div>
+
+        <div class="form-group">
+            <label for="cep">CEP</label>
+            <input type="text" id="cep" name="cep" 
+                   pattern="^[0-9]{8}$" 
+                   title="Insira um CEP válido com 8 dígitos." 
+                   inputmode="numeric" required>
+        </div>
+        </div>
+
+        <div class="form-row form-row-2">
+            <div class="form-group">
+                <label for="referencia_completa">Referência Completa <span class="placeholder">- Obrigatório</span></label>
+                <input type="text" id="referencia_completa" name="referencia_completa" required>
+            </div>
+            <div class="form-group">
+                <label for="bairro">Bairro</label>
+                <input type="text" id="bairro" name="bairro" required>
+            </div>
+        </div>
+
+        <!-- Telefones -->
+        <div class="form-row form-row-2">
+            <div class="form-group">
+                <label for="telefone_principal">Telefone Principal</label>
+                <input type="text" id="telefone_principal" name="telefone_principal" 
+                       pattern="^[0-9]{10,11}$" 
+                       title="Insira um número de telefone válido com 10 ou 11 dígitos." 
+                       inputmode="numeric" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone_recado">Telefone para Recado<span class="placeholder"> - Obrigatório</span></label>
+                <input type="text" id="telefone_recado" name="telefone_recado" 
+                       pattern="^[0-9]{10,11}$" 
+                       title="Insira um número de telefone válido com 10 ou 11 dígitos." 
+                       inputmode="numeric" required>
+            </div>
+        </div>
+
+        <!-- Plano e Vencimento -->
+        <div class="form-row form-row-2">
+            <div class="form-group">
+                <label for="plano_escolhido">Plano Escolhido</label>
+                <input type="text" id="plano_escolhido" name="plano_escolhido" required>
+            </div>
+            <div class="form-group">
+                <label for="vencimento_mensalidade">Vencimento da Mensalidade</label>
+                <select id="vencimento_mensalidade" name="vencimento_mensalidade" required>
+                    <option value="">Selecione o dia</option>
+                    <option value="01">01</option>
+                    <option value="05">05</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row form-row-2">
+        <!-- Taxa de instalação e forma de pagamento -->
+        <div class="form-group">
+            <label for="taxa_instalacao">Taxa de Instalação e Forma de Pagamento</label>
+            <input type="text" id="taxa_instalacao" name="taxa_instalacao">
+        </div>
+
+        <!-- Forma de Pagamento Mensalidade -->
+        <div class="form-group">
+            <label for="forma_pagto">Forma de Pagamento da Mensalidade</label>
+            <select id="forma_pagto" name="forma_pagto" required>
+                <option value="BOLETO">BOLETO</option>
+                <option value="CARTAO DE CREDITO RECORRENTE">CARTÃO DE CRÉDITO RECORRENTE</option>
+            </select>
+        </div>
+       </div>
+
+        <!-- Quem vai acompanhar a instalação -->
+        <h3>Quem vai acompanhar a instalação:</h3>
+        <div class="form-row form-row-2">
+            <div class="form-group">
+                <label for="acompanhante_nome">Nome</label>
+                <input type="text" id="acompanhante_nome" name="acompanhante_nome">
+            </div>
+            <div class="form-group">
+                <label for="acompanhante_telefone">Telefone</label>
+                <input type="text" id="acompanhante_telefone" name="acompanhante_telefone" 
+                       pattern="^[0-9]{10,11}$" 
+                       title="Insira um número de telefone válido com 10 ou 11 dígitos." 
+                       inputmode="numeric">
+            </div>
+        </div>
+
+        <!-- Serviço adicional -->
+        <div class="form-group">
+            <label for="servico_adicional">Serviço Adicional (caso possua)</label>
+            <input type="text" id="servico_adicional" name="servico_adicional">
+        </div>
+
+        <!-- Observações -->
+        <div class="form-group">
+            <label for="observacoes">Observações para Ordem de Serviço</label>
+            <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+        </div>
+
+        <!-- Vendedora -->
+        <div class="form-group">
+            <label for="vendedora" class="last-input">Vendedor(a)</label>
+            <input type="text" id="vendedora" name="vendedora">
+        </div>
+
+        <div class="button-group">
+            <button type="button" onclick="gerarFicha()">Gerar Ficha e Copiar</button>
+            <button type="button" id="resetButton" onclick="limparFormulario()">Limpar Formulário</button>
+        </div>
+    </form>
+
+    <p id="resultado"></p>
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
