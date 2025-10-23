@@ -32,21 +32,11 @@ function removerAcentosECaracteresEspeciais(str) {
 function obterValorCampo(id, uppercase = true) {
     const elemento = document.getElementById(id);
     if (!elemento) return '';
-    
+
     let valor = elemento.value || '';
-    
-    // Formatação especial para data de nascimento
-    if (id === 'data_nascimento' && valor) {
-        // Converte de YYYY-MM-DD para DD/MM/YYYY
-        const data = new Date(valor);
-        const dia = String(data.getDate()).padStart(2, '0');
-        const mes = String(data.getMonth() + 1).padStart(2, '0');
-        const ano = data.getFullYear();
-        valor = `${dia}/${mes}/${ano}`;
-    }
-    
+
     const valorSemAcentos = removerAcentosECaracteresEspeciais(valor);
-    
+
     return uppercase ? valorSemAcentos.toUpperCase() : valorSemAcentos;
 }
 
@@ -256,7 +246,7 @@ function configurarFormatacaoAutomatica() {
             }
         });
     }
-    
+
     // CEP - apenas números, máximo 8 dígitos
     const cepInput = document.getElementById('cep');
     if (cepInput) {
@@ -267,7 +257,47 @@ function configurarFormatacaoAutomatica() {
             }
         });
     }
-    
+
+    // Data de Nascimento - autocomplete com / (dd/mm/aaaa)
+    const dataInput = document.getElementById('data_nascimento');
+    if (dataInput) {
+        dataInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é número
+
+            // Adiciona as barras automaticamente
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2);
+            }
+            if (value.length >= 5) {
+                value = value.substring(0, 5) + '/' + value.substring(5);
+            }
+
+            // Limita ao tamanho máximo (dd/mm/aaaa = 10 caracteres)
+            if (value.length > 10) {
+                value = value.substring(0, 10);
+            }
+
+            e.target.value = value;
+        });
+
+        // Adiciona validação ao sair do campo
+        dataInput.addEventListener('blur', function(e) {
+            const value = e.target.value;
+            if (value && value.length === 10) {
+                const partes = value.split('/');
+                const dia = parseInt(partes[0]);
+                const mes = parseInt(partes[1]);
+                const ano = parseInt(partes[2]);
+
+                // Validação básica
+                if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || ano < 1900 || ano > new Date().getFullYear()) {
+                    showToast('Data de nascimento inválida!', true);
+                    e.target.value = '';
+                }
+            }
+        });
+    }
+
     // Telefones - apenas números, máximo 11 dígitos
     const telefoneIds = ['telefone_principal', 'telefone_recado', 'acompanhante_telefone'];
     telefoneIds.forEach(id => {
